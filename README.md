@@ -14,6 +14,7 @@ Or you can specify which one you want to execute
 
     go run hello_world.go
     go run integers.go
+    go run struct_and_interface.go
 
 ## To run the tests
 
