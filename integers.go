@@ -10,3 +10,10 @@ func Add(integers []int) (sum int) {
 	}
 	return sum
 }
+
+func Sub(integers []int) (sub int) {
+	for _, v := range integers {
+		sub -= v
+	}
+	return sub
+}
