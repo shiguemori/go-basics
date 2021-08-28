@@ -5,14 +5,14 @@
 package main
 
 import (
-	"fmt"
+	"reflect"
 	"testing"
 )
 
 func TestAdd(t *testing.T) {
 	assertCorrectSum := func(t testing.TB, got, want int) {
 		t.Helper()
-		if got != want {
+		if !reflect.DeepEqual(got, want) {
 			t.Errorf("got %q want %q", got, want)
 		}
 	}
@@ -41,7 +41,7 @@ func TestAdd(t *testing.T) {
 func TestSub(t *testing.T) {
 	assertCorrectSub := func(t testing.TB, got, want int) {
 		t.Helper()
-		if got != want {
+		if !reflect.DeepEqual(got, want) {
 			t.Errorf("got %q want %q", got, want)
 		}
 	}
@@ -63,7 +63,6 @@ func TestSub(t *testing.T) {
 		arrayIntegers := []int{-2, -3, -5}
 		got := Sub(arrayIntegers)
 		want := 10
-		fmt.Println(got)
 		assertCorrectSub(t, got, want)
 	})
 }
