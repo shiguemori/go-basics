@@ -1,6 +1,8 @@
-package main
+/*
+ * Copyright (c) 2021.
+ */
 
-import "fmt"
+package main
 
 const englishHelloPrefix = "Hello, "
 const spanishHelloPrefix = "Hola, "
@@ -31,8 +33,4 @@ func Hello(name, language string) string {
 		name = defaultName
 	}
 	return greetingPrefix(language) + name
-}
-
-func main() {
-	fmt.Println(Hello("Shiguemori", ""))
 }

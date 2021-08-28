@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2021.
+ */
+
 package main
 
 import "testing"
