@@ -41,13 +41,15 @@ func TestSearch(t *testing.T) {
 	})
 
 	t.Run("count word", func(t *testing.T) {
-		qty := dictionary.Count()
+		dictionary2 := Dictionary{"test": "this is just a test", "teste": "Isso e um teste"}
+		qty := dictionary2.Count()
 		assertInt(t, 2, qty)
 	})
 
 	t.Run("merge dictionary", func(t *testing.T) {
-		dictionary2 := Dictionary{"test3": "this is just another test", "teste4": "Isso e um outro teste"}
-		newDictionary, err := dictionary.Merge(dictionary2)
+		dictionary2 := Dictionary{"test": "this is just a test", "teste": "Isso e um teste"}
+		dictionary3 := Dictionary{"test3": "this is just another test", "teste4": "Isso e um outro teste"}
+		newDictionary, err := dictionary2.Merge(dictionary3)
 		qty := newDictionary.Count()
 		assertErrorDictionary(t, err, nil)
 		assertInt(t, 4, qty)
