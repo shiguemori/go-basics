@@ -4,7 +4,11 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"log"
+	"net/http"
+)
 
 func main() {
 	fmt.Println(fmt.Sprintf("Program %d - Hello(\"Shiguemori\", \"\") return %s", 1, Hello("Shiguemori", "")))
@@ -22,7 +26,9 @@ func main() {
 	if err != nil {
 		return
 	}
-	fmt.Println(fmt.Sprintf("Program %d - dictionary.Search(\"test\") return %d", 5, search))
+	fmt.Println(fmt.Sprintf("Program %d - dictionary.Search(\"test\") return %s", 5, search))
+	fmt.Println(fmt.Sprintf("Program %d - Is running on http://localhost:5050/YOUR_NAME", 6))
+	log.Fatal(http.ListenAndServe(":5050", http.HandlerFunc(MyGreeterHandler)))
 
 }
 
