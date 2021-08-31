@@ -33,10 +33,7 @@ func (w *Wallet) Balance() Bitcoin {
 }
 
 func (w *Wallet) Transfer(amount Bitcoin) error {
-	err := w.Withdraw(amount)
-	if err != nil {
-		return err
-	}
+	w.Withdraw(amount)
 	w.balance -= 3
 	return nil
 }

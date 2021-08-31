@@ -131,3 +131,34 @@ func assertInt(t testing.TB, got, want int) {
 		t.Errorf("got %q want %q", got, want)
 	}
 }
+
+func TestDictionaryErr_Error(t *testing.T) {
+	tests := []struct {
+		name string
+		e    DictionaryErr
+		want string
+	}{
+		{
+			name: "ErrNotFound",
+			e:    ErrNotFound,
+			want: "could not find the word you were looking for",
+		},
+		{
+			name: "ErrWordExists",
+			e:    ErrWordExists,
+			want: "cannot add word because it already exists",
+		},
+		{
+			name: "ErrWordDoesNotExist",
+			e:    ErrWordDoesNotExist,
+			want: "cannot update word because it does not exist",
+		}}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			got := tt.e.Error()
+			if got != tt.want {
+				t.Errorf("Error() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}

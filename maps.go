@@ -74,16 +74,10 @@ func (d Dictionary) Count() int {
 func (d Dictionary) Merge(dictionary Dictionary) (Dictionary, error) {
 	newDict := Dictionary{}
 	for k, v := range d {
-		err := newDict.Add(k, v)
-		if err != nil {
-			return newDict, err
-		}
+		newDict.Add(k, v)
 	}
 	for k, v := range dictionary {
-		err := newDict.Add(k, v)
-		if err != nil {
-			return newDict, err
-		}
+		newDict.Add(k, v)
 	}
 	return newDict, nil
 }
