@@ -5,9 +5,11 @@
 package main
 
 import (
+	"bytes"
 	"fmt"
 	"log"
 	"net/http"
+	"strings"
 )
 
 func main() {
@@ -27,9 +29,21 @@ func main() {
 		return
 	}
 	fmt.Println(fmt.Sprintf("Program %d - dictionary.Search(\"test\") return %s", 5, search))
-	fmt.Println(fmt.Sprintf("Program %d - Is running on http://localhost:5050/YOUR_NAME", 6))
-	log.Fatal(http.ListenAndServe(":5050", http.HandlerFunc(MyGreeterHandler)))
 
+	out := &bytes.Buffer{}
+	runGoRoutine(out)
+	fmt.Println(fmt.Sprintf("Program %d - runGoRoutine(out) return %s", 6, out.String()))
+
+	out2 := &bytes.Buffer{}
+	channels(out2, "ping")
+	fmt.Println(fmt.Sprintf("Program %d - channels(out2, \"ping\") return %s", 7, strings.Replace(out.String(), "\n", "", -1)))
+
+	out3 := &bytes.Buffer{}
+	channelBuffering(out3, []string{"test", "test", "test"})
+	fmt.Println(fmt.Sprintf("Program %d - channelBuffering(out3, []string{\"test\", \"test\", \"test\"}) return %s", 8, strings.Replace(out.String(), "\n", "", -1)))
+
+	fmt.Println(fmt.Sprintf("Program %d - Is running on http://localhost:5050/YOUR_NAME", 99))
+	log.Fatal(http.ListenAndServe(":5050", http.HandlerFunc(MyGreeterHandler)))
 }
 
 func programStruct() []struct {
