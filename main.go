@@ -7,6 +7,8 @@ package main
 import (
 	"bytes"
 	"fmt"
+	"log"
+	"net/http"
 	"strings"
 )
 
@@ -44,8 +46,12 @@ func main() {
 	channelSynchronization(out4)
 	fmt.Println(fmt.Sprintf("Program %d - channelSynchronization(out4) return %s", 9, strings.Replace(out4.String(), "\n", "", -1)))
 
-	//fmt.Println(fmt.Sprintf("Program %d - Is running on http://localhost:5050/YOUR_NAME", 99))
-	//log.Fatal(http.ListenAndServe(":5050", http.HandlerFunc(MyGreeterHandler)))
+	out5 := &bytes.Buffer{}
+	channelDirections(out5)
+	fmt.Println(fmt.Sprintf("Program %d - channelDirections(out5) return %s", 10, strings.Replace(out5.String(), "\n", "", -1)))
+
+	fmt.Println(fmt.Sprintf("Program %d - Is running on http://localhost:5050/YOUR_NAME", 99))
+	log.Fatal(http.ListenAndServe(":5050", http.HandlerFunc(MyGreeterHandler)))
 }
 
 func programStruct() []struct {
