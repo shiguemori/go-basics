@@ -7,8 +7,6 @@ package main
 import (
 	"bytes"
 	"fmt"
-	"log"
-	"net/http"
 	"strings"
 )
 
@@ -36,14 +34,18 @@ func main() {
 
 	out2 := &bytes.Buffer{}
 	channels(out2, "ping")
-	fmt.Println(fmt.Sprintf("Program %d - channels(out2, \"ping\") return %s", 7, strings.Replace(out.String(), "\n", "", -1)))
+	fmt.Println(fmt.Sprintf("Program %d - channels(out2, \"ping\") return %s", 7, strings.Replace(out2.String(), "\n", "", -1)))
 
 	out3 := &bytes.Buffer{}
 	channelBuffering(out3, []string{"test", "test", "test"})
-	fmt.Println(fmt.Sprintf("Program %d - channelBuffering(out3, []string{\"test\", \"test\", \"test\"}) return %s", 8, strings.Replace(out.String(), "\n", "", -1)))
+	fmt.Println(fmt.Sprintf("Program %d - channelBuffering(out3, []string{\"test\", \"test\", \"test\"}) return %s", 8, strings.Replace(out3.String(), "\n", "", -1)))
 
-	fmt.Println(fmt.Sprintf("Program %d - Is running on http://localhost:5050/YOUR_NAME", 99))
-	log.Fatal(http.ListenAndServe(":5050", http.HandlerFunc(MyGreeterHandler)))
+	out4 := &bytes.Buffer{}
+	channelSynchronization(out4)
+	fmt.Println(fmt.Sprintf("Program %d - channelSynchronization(out4) return %s", 9, strings.Replace(out4.String(), "\n", "", -1)))
+
+	//fmt.Println(fmt.Sprintf("Program %d - Is running on http://localhost:5050/YOUR_NAME", 99))
+	//log.Fatal(http.ListenAndServe(":5050", http.HandlerFunc(MyGreeterHandler)))
 }
 
 func programStruct() []struct {
