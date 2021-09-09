@@ -62,6 +62,14 @@ func main() {
 	ClosingChannels(out9)
 	fmt.Println(fmt.Sprintf("Program %d - ClosingChannels(out9) return %s", 12, bufferToStringReplace(out9)))
 
+	out10 := &bytes.Buffer{}
+	RangeOverChannels(out10)
+	fmt.Println(fmt.Sprintf("Program %d - RangeOverChannels(out10) return %s", 13, bufferToStringReplace(out10)))
+
+	out11 := &bytes.Buffer{}
+	Timers(out11)
+	fmt.Println(fmt.Sprintf("Program %d - Timers(out11) return %s", 14, bufferToStringReplace(out11)))
+
 	fmt.Println(fmt.Sprintf("Program %d - Is running on http://localhost:5050/YOUR_NAME", 99))
 	log.Fatal(http.ListenAndServe(":5050", http.HandlerFunc(MyGreeterHandler)))
 }
