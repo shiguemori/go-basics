@@ -54,6 +54,14 @@ func main() {
 	selectFunction(out6, out7, "test", "test 2")
 	fmt.Println(fmt.Sprintf("Program %d - selectFunction(out6, out7, \"test\", \"test 2\") return %s", 11, bufferToStringReplace(out6)+bufferToStringReplace(out7)))
 
+	out8 := &bytes.Buffer{}
+	NonBlockingChannel(out8)
+	fmt.Println(fmt.Sprintf("Program %d - NonBlockingChannel(out8) return %s", 12, bufferToStringReplace(out8)))
+
+	out9 := &bytes.Buffer{}
+	ClosingChannels(out9)
+	fmt.Println(fmt.Sprintf("Program %d - ClosingChannels(out9) return %s", 12, bufferToStringReplace(out9)))
+
 	fmt.Println(fmt.Sprintf("Program %d - Is running on http://localhost:5050/YOUR_NAME", 99))
 	log.Fatal(http.ListenAndServe(":5050", http.HandlerFunc(MyGreeterHandler)))
 }
