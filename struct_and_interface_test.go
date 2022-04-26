@@ -38,14 +38,14 @@ func TestArea(t *testing.T) {
 	}
 
 	for _, tt := range areaTests {
-		t.Run(tt.name + " calculating area", func(t *testing.T) {
+		t.Run(tt.name+" calculating area", func(t *testing.T) {
 			got := tt.shape.Area()
 			if !reflect.DeepEqual(got, tt.area) {
 				t.Errorf("%#v got %g want %g", tt.shape, got, tt.area)
 			}
 		})
 
-		t.Run(tt.name + " calculating perimeter", func(t *testing.T) {
+		t.Run(tt.name+" calculating perimeter", func(t *testing.T) {
 			got := tt.shape.Perimeter()
 			if !reflect.DeepEqual(got, tt.perimeter) {
 				t.Errorf("%#v got %g want %g", tt.shape, got, tt.perimeter)

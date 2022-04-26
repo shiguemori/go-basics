@@ -74,6 +74,10 @@ func main() {
 	Tickers(out12)
 	fmt.Println(fmt.Sprintf("Program %d - Tickers(out12) return %s", 16, bufferToStringReplace(out12)))
 
+	out13 := &bytes.Buffer{}
+	Generics(out13)
+	fmt.Println(fmt.Sprintf("Program %d - Generics(out13) return %s", 17, bufferToStringReplace(out13)))
+
 	fmt.Println(fmt.Sprintf("Program %d - Is running on http://localhost:5050/YOUR_NAME", 99))
 	log.Fatal(http.ListenAndServe(":5050", http.HandlerFunc(MyGreeterHandler)))
 }
